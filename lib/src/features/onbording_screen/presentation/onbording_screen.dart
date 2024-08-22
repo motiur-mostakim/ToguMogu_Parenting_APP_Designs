@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:togumogu_parenting_app_designs/src/core/widgets/button_widgets.dart';
-import 'package:togumogu_parenting_app_designs/src/features/authentication/login_screen/presentation/loginIn_screen.dart';
+import '../../authentication/login_screen/presentation/loginIn_screen.dart';
 import '../../authentication/signIn_screen/presentation/signIn_screen.dart';
 
 class OnBordingScreen extends StatefulWidget {
@@ -41,10 +41,19 @@ class _OnBordingScreenState extends State<OnBordingScreen>
     super.initState();
     _pageController = PageController(initialPage: _currentIndex);
   }
+
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  bool isBangla = true;
+
+  void toggleLanguage() {
+    setState(() {
+      isBangla = !isBangla;
+    });
   }
 
   @override
@@ -55,40 +64,48 @@ class _OnBordingScreenState extends State<OnBordingScreen>
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(right: 16.w),
-            child: Container(
-              margin: EdgeInsets.only(top: 60.h, left: 261.w),
-              alignment: Alignment.center,
-              height: 32.h,
-              width: 85.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.r),
-                border: Border.all(width: 1.w, color: const Color(0xFFD2D2D2)),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 10.w, right: 11.w), // Adjusted
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // Center alignment
-                  children: [
-                    Image.asset(
-                      "assets/images/image 309.png",
-                      height: 12.h,
-                      width: 12.w,
-                    ),
-                    SizedBox(width: 4.w),
-                    Text(
-                      "বাংলা",
-                      style: GoogleFonts.notoSerifBengali(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF1C1C1C)),
-                    ),
-                  ],
+              padding: EdgeInsets.only(right: 16.w),
+              child: Container(
+                margin: isBangla
+                    ? EdgeInsets.only(top: 60.h, left: 275.w)
+                    : EdgeInsets.only(top: 60.h, left: 265.w),
+                alignment: Alignment.center,
+                height: 32.h,
+                width: isBangla ? 70.w : 90,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.r),
+                  border:
+                      Border.all(width: 1.w, color: const Color(0xFFD2D2D2)),
                 ),
-              ),
-            ),
-          ),
+                child: TextButton(
+                  onPressed: toggleLanguage,
+                  // Handle the tap event to toggle language
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/image 309.png",
+                        height: 12.h,
+                        width: 12.w,
+                      ),
+                      SizedBox(width: 6.w),
+                      Text(
+                        isBangla ? "বাংলা" : "English",
+                        textAlign: TextAlign.center,
+                        style: isBangla
+                            ? GoogleFonts.notoSerifBengali(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFF1C1C1C))
+                            : GoogleFonts.roboto(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFF1C1C1C)),
+                      ),
+                    ],
+                  ),
+                ),
+              )),
           SizedBox(height: 50.h),
           Expanded(
             child: Column(
@@ -135,7 +152,6 @@ class _OnBordingScreenState extends State<OnBordingScreen>
                     ),
                   ),
                 ),
-
                 SizedBox(
                   height: 30.h,
                 ),
@@ -175,56 +191,31 @@ class _OnBordingScreenState extends State<OnBordingScreen>
                 ),
               ),
               SizedBox(height: 40.h),
-
-              ButtonWidgets(btnFunc: (){}, btnTextTile: "Log in",),
-              // Add space between dots indicator and buttons
-              // Container(
-              //   height: 48.h,
-              //   width: 182.w,
-              //   decoration: BoxDecoration(
-              //       color: const Color(0xFF2F5596),
-              //       borderRadius: BorderRadius.circular(8.r)),
-              //   child: TextButton(
-              //     onPressed: () {
-              //       Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //               builder: (context) =>  const LoginInScreen()));
-              //     },
-              //     child: Text(
-              //       "Log in",
-              //       style: TextStyle(
-              //         fontSize: 16.sp,
-              //         fontWeight: FontWeight.bold,
-              //         color: const Color(0xFFFFFFFF),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              SizedBox(height: 15.h),
-              Container(
-                height: 48.h,
-                width: 182.w,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFE0E6EF),
-                    borderRadius: BorderRadius.circular(8.r)),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
+              ButtonWidgets(
+                textColors: const Color(0xFFFFFFFF),
+                colors: const Color(0xFF2F5596),
+                btnLeadingAssets: '',
+                btnFunc: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignInScreen()),
-                    );
-                  },
-                  child: Text(
-                    "Sign Up",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF2F5596),
-                    ),
-                  ),
-                ),
+                          builder: (context) => const LoginInScreen()));
+                },
+                btnTextTile: "Log in",
+              ),
+              SizedBox(height: 15.h),
+              ButtonWidgets(
+                textColors: const Color(0xFF2F5596),
+                colors: const Color(0xFFE0E6EF),
+                btnLeadingAssets: '',
+                btnFunc: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignInScreen()),
+                  );
+                },
+                btnTextTile: "Sign Up",
               ),
             ],
           ),

@@ -83,6 +83,8 @@ class _CurrenStageScreenState extends State<CurrenStageScreen> {
             height: 298.h,
           ),
           ButtonWidgets(
+            textColors: const Color(0xFFFFFFFF),
+            colors: const Color(0xFF2F5596),
             btnFunc: () {
               widget.buttonFunc();
             },
@@ -100,6 +102,7 @@ class _CurrenStageScreenState extends State<CurrenStageScreen> {
     required ValueChanged<bool?> onChanged,
   }) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 2.r),
       alignment: Alignment.center,
       height: 63.h,
       width: 328.w,

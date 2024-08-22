@@ -204,6 +204,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:togumogu_parenting_app_designs/src/core/widgets/pin_put_widget.dart';
 import 'package:togumogu_parenting_app_designs/src/features/onbording_screen/presentation/child_information_screen.dart';
 import 'package:togumogu_parenting_app_designs/src/features/onbording_screen/presentation/complete_profile_screen.dart';
 import 'package:togumogu_parenting_app_designs/src/features/onbording_screen/presentation/onBording_curren_stage_screen.dart';
@@ -318,41 +319,6 @@ class _MobileNumberVerifyScreensState extends State<MobileNumberVerifyScreens> {
       ),
     );
   }
-
-  Widget _pinPut(int index) {
-    return Container(
-      alignment: Alignment.center,
-      height: 48.h,
-      width: 55.w,
-      child: TextField(
-        onChanged: (value) {
-          if (value.length == 1) {
-            FocusScope.of(context).nextFocus();
-          }
-        },
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(1),
-          FilteringTextInputFormatter.digitsOnly,
-        ],
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Color(0xFFD2D2D2)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.blue),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _varifyScreen() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -380,28 +346,13 @@ class _MobileNumberVerifyScreensState extends State<MobileNumberVerifyScreens> {
         SizedBox(
           height: 30.h,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            _pinPut(0),
-            SizedBox(
-              width: 24.w,
-            ),
-            _pinPut(1),
-            SizedBox(
-              width: 24.w,
-            ),
-            _pinPut(2),
-            SizedBox(
-              width: 24.w,
-            ),
-            _pinPut(3),
-          ],
-        ),
+        PinputWidget(),
         SizedBox(
           height: 20.h,
         ),
         ButtonWidgets(
+          textColors: const Color(0xFFFFFFFF),
+          colors: const Color(0xFF2F5596),
           btnLeadingAssets: '',
           btnFunc: () {
             _nextStep();

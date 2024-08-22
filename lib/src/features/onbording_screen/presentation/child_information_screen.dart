@@ -39,7 +39,7 @@ class _ChildInformationScreenState extends State<ChildInformationScreen> {
             ),
             const TextFieldWidget(
               hintTextTile: null,
-              prefixIconWidget: null,
+              suffixIconWidget: null,
               childs: null,
               lableTextTile: "Name",
             ),
@@ -48,7 +48,7 @@ class _ChildInformationScreenState extends State<ChildInformationScreen> {
             ),
             const TextFieldWidget(
               hintTextTile: null,
-              prefixIconWidget: null,
+              suffixIconWidget: null,
               childs: null,
               lableTextTile: "Date of Birth",
             ),
@@ -68,7 +68,11 @@ class _ChildInformationScreenState extends State<ChildInformationScreen> {
             SizedBox(
               height: 205.h,
             ),
-            ButtonWidgets(btnFunc: widget.buttonFunc, btnTextTile: 'Continue')
+            ButtonWidgets(
+                textColors: const Color(0xFFFFFFFF),
+                colors: const Color(0xFF2F5596),
+                btnFunc: widget.buttonFunc,
+                btnTextTile: 'Continue')
           ],
         ),
       ),

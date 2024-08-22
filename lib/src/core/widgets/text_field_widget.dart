@@ -6,25 +6,26 @@ class TextFieldWidget extends StatelessWidget {
   final String? hintTextTile;
   final String? lableTextTile;
   final Widget? childs;
-  final Widget?prefixIconWidget;
+  final Widget? suffixIconWidget;
 
   const TextFieldWidget(
-      {super.key, this.hintTextTile, this.childs, this.lableTextTile,this.prefixIconWidget});
+      {super.key, this.hintTextTile, this.childs, this.lableTextTile,this.suffixIconWidget});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
+        suffixIcon: suffixIconWidget,
         labelText: lableTextTile,
         labelStyle: GoogleFonts.roboto(
-          color: const Color(0xFFD2D2D2),
-          fontSize: 12.sp,
+          color: const Color(0xFF8D8D8D),
+          fontSize: 14.sp,
           fontWeight: FontWeight.w400,
         ),
         hintText: hintTextTile,
         hintStyle: GoogleFonts.roboto(
-          color: const Color(0xFFD2D2D2),
+          color: const Color(0xFF8D8D8D),
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
         ),
@@ -38,8 +39,8 @@ class TextFieldWidget extends StatelessWidget {
               const SizedBox(width: 8),
               Container(
                 height: 20,
-                width: 1,
-                color: Colors.grey,
+                width: 0.5,
+                color: const Color(0xFF8D8D8D),
               ),
             ],
           ),

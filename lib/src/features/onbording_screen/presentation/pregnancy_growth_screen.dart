@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:togumogu_parenting_app_designs/src/core/widgets/text_field_widget.dart';
 import '../../../core/widgets/button_widgets.dart';
 
 class PregnancyGrowthScreen extends StatefulWidget {
   final VoidCallback buttonFunc;
-  const PregnancyGrowthScreen({super.key,required this.buttonFunc});
+
+  const PregnancyGrowthScreen({super.key, required this.buttonFunc});
 
   @override
   State<PregnancyGrowthScreen> createState() => _PregnancyGrowthScreenState();
 }
 
 class _PregnancyGrowthScreenState extends State<PregnancyGrowthScreen> {
-
   String? selectedGender;
   String? selectedWorkingStatus;
 
@@ -36,28 +37,16 @@ class _PregnancyGrowthScreenState extends State<PregnancyGrowthScreen> {
             SizedBox(
               height: 30.h,
             ),
-            TextFormField(
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.calendar_month_rounded,
-                      color: Colors.grey,
-                    )),
-                labelText: 'Place Holder',
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Color(0xFFD2D2D2)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Colors.blue),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-              ),
+            TextFieldWidget(
+              hintTextTile: null,
+              childs: null,
+              lableTextTile: 'Place Holder',
+              suffixIconWidget: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.calendar_month_rounded,
+                    color: Colors.grey,
+                  )),
             ),
             SizedBox(
               height: 26.h,
@@ -65,7 +54,11 @@ class _PregnancyGrowthScreenState extends State<PregnancyGrowthScreen> {
             SizedBox(
               height: 400.h,
             ),
-            ButtonWidgets(btnFunc: widget.buttonFunc, btnTextTile: 'Continue')
+            ButtonWidgets(
+                textColors: const Color(0xFFFFFFFF),
+                colors: const Color(0xFF2F5596),
+                btnFunc: widget.buttonFunc,
+                btnTextTile: 'Continue')
           ],
         ),
       ),

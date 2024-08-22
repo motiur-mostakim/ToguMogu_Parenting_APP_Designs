@@ -39,7 +39,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
             ),
             const TextFieldWidget(
               hintTextTile: null,
-              prefixIconWidget: null,
+              suffixIconWidget: null,
               childs: null,
               lableTextTile: "Name",
             ),
@@ -48,7 +48,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
             ),
             const TextFieldWidget(
               hintTextTile: null,
-              prefixIconWidget: null,
+              suffixIconWidget: null,
               childs: null,
               lableTextTile: "Email",
             ),
@@ -115,7 +115,8 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
           height: 230.h,
         )
             ],
-            ButtonWidgets(
+            ButtonWidgets(textColors: const Color(0xFFFFFFFF),
+              colors: const Color(0xFF2F5596),
               btnFunc: widget.buttonFunc,
               btnTextTile: 'Continue',
             )

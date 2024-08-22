@@ -15,7 +15,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   String _signUpText = "Sign up using phone number";
   String _continueButtonText = "Continue with Email";
-  String _signUpHintText = '01XXXXXXXXXX';
+  String _signUpLableText = 'Phone Number';
+  String _signUpHintText = '01XXXXXXXXX';
   IconData _signUpIcon = Icons.call;
   String _continueButtonImage = 'assets/images/email.png';
 
@@ -24,6 +25,7 @@ class _SignInScreenState extends State<SignInScreen> {
       if (_signUpText == "Sign up using phone number") {
         // Switch to email sign up
         _signUpText = "Sign up using email";
+         _signUpLableText = 'Email';
         _signUpHintText = 'xyz@gmail.com';
         _signUpIcon = Icons.email;
         _continueButtonText = "Continue with Phone Number";
@@ -31,7 +33,8 @@ class _SignInScreenState extends State<SignInScreen> {
       } else {
         // Switch to phone number sign up
         _signUpText = "Sign up using phone number";
-        _signUpHintText = '01XXXXXXXXXX';
+        _signUpHintText = '01XXXXXXXXX';
+         _signUpLableText = 'Phone Number';
         _signUpIcon = Icons.call;
         _continueButtonText = "Continue with Email";
         _continueButtonImage = 'assets/images/email.png';
@@ -77,13 +80,15 @@ class _SignInScreenState extends State<SignInScreen> {
               TextFieldWidget(
                 hintTextTile: _signUpHintText,
                 childs: Icon(_signUpIcon),
-                lableTextTile: _signUpHintText,
-                prefixIconWidget: null,
+                lableTextTile: _signUpLableText,
+                suffixIconWidget: null,
               ),
               SizedBox(
                 height: 20.h,
               ),
               ButtonWidgets(
+                textColors: const Color(0xFFFFFFFF),
+                colors: const Color(0xFF2F5596),
                 btnLeadingAssets: '',
                 btnFunc: () {
                   Navigator.push(
@@ -125,6 +130,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 20.h,
               ),
               ButtonWidgets(
+                colors: Color(0xFFFFFFFF),
                 btnFunc: () {},
                 btnTextTile: "Continue with Google",
                 btnLeadingAssets: 'assets/images/google_icon.jpeg',
@@ -133,6 +139,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 16.h,
               ),
               ButtonWidgets(
+                colors: const Color(0xFFFFFFFF),
                 btnFunc: () {},
                 btnTextTile: "Continue with Facebook",
                 btnLeadingAssets: 'assets/images/facebook.png',
@@ -141,6 +148,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 16.h,
               ),
               ButtonWidgets(
+                colors: const Color(0xFFFFFFFF),
                 btnFunc: _toggleSignUpAndContinueButtons,
                 btnTextTile: _continueButtonText,
                 btnLeadingAssets: _continueButtonImage,

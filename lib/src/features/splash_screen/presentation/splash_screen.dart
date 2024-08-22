@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:togumogu_parenting_app_designs/src/features/onbording_screen/presentation/onbording_screen.dart';
-import '../../authentication/mobile_number_verify_screen/presentation/mobile_number_verify_screens.dart';
+import '../../onbording_screen/presentation/onbording_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   final int? currentStep;
